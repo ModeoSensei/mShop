@@ -2,10 +2,8 @@
 
 Retrouvez moi sur discord : Modeo#3074
 
-Petit script Location en RageUI ! 🔥
-
-..Inspiré par Pablo (Développeur de Redside) 👍
+Petit script Shop en RageUI ! 🔥
 
 Discord : https://discord.gg/VUSUP457CG
 
-Preview : https://youtu.be/Ot7vf4KqJAs
+Preview : https://www.youtube.com/watch?v=278TeLCNePk

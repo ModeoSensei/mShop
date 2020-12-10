@@ -2,9 +2,6 @@ fx_version 'adamant'
 
 game 'gta5'
 
------------- RAGEUI ------------
-
-
 client_scripts {
     "src/RMenu.lua",
     "src/menu/RageUI.lua",
@@ -24,14 +21,13 @@ client_scripts {
 
 }
 
-
 client_scripts {
-    'client.lua'
+	'client.lua'
 }
 
 
 server_scripts {
-    'server.lua'
+	'server.lua'
 }
 
 

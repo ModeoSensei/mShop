@@ -7,53 +7,31 @@ Citizen.CreateThread(function()
 	end
 end)
 
-
-
 ------------ Création du Menu / Sous Menu -----------
 
-
-
-RMenu.Add('example', 'main', RageUI.CreateMenu("Magasin", "Menu Magasin"))
-RMenu.Add('example', 'boisson', RageUI.CreateSubMenu(RMenu:Get('example', 'main'), "Boissons", "Menu Boissons"))
-RMenu.Add('example', 'nourriture', RageUI.CreateSubMenu(RMenu:Get('example', 'main'), "Nourritures", "Menu Nourritures"))
-RMenu.Add('example', 'tabac', RageUI.CreateSubMenu(RMenu:Get('example', 'main'), "Tabac", "Menu Tabac"))
-RMenu.Add('example', 'alcool', RageUI.CreateSubMenu(RMenu:Get('example', 'main'), "Alcool", "Menu Alcool"))
-RMenu.Add('example', 'autre', RageUI.CreateSubMenu(RMenu:Get('example', 'main'), "Autres", "Menu Autres"))
-
-
+RMenu.Add('Modeo', 'main', RageUI.CreateMenu("Magasin", "Menu Magasin"))
+RMenu.Add('Modeo', 'boisson', RageUI.CreateSubMenu(RMenu:Get('Modeo', 'main'), "Boissons", "Menu Boissons"))
+RMenu.Add('Modeo', 'nourriture', RageUI.CreateSubMenu(RMenu:Get('Modeo', 'main'), "Nourritures", "Menu Nourritures"))
+RMenu.Add('Modeo', 'autre', RageUI.CreateSubMenu(RMenu:Get('Modeo', 'main'), "Autres", "Menu Autres"))
 
 Citizen.CreateThread(function()
-
     while true do
+        RageUI.IsVisible(RMenu:Get('Modeo', 'main'), true, true, true, function()
 
-        RageUI.IsVisible(RMenu:Get('example', 'main'), true, true, true, function()
+            RageUI.Button("Boissons", "Choisi ta Boisson !", {RightLabel = "•"},true, function()
+            end, RMenu:Get('Modeo', 'boisson'))
 
+            RageUI.Button("Nourritures", "Choisi ta Nourriture !", {RightLabel = "•"},true, function()
+            end, RMenu:Get('Modeo', 'nourriture'))
 
-            RageUI.Button("Boissons", "Choisi ta Boisson !", {RightLabel = "→"},true, function()
-            end, RMenu:Get('example', 'boisson'))
-
-            RageUI.Button("Nourritures", "Choisi ta Nourriture !", {RightLabel = "→"},true, function()
-            end, RMenu:Get('example', 'nourriture'))
-
-            RageUI.Button("Tabac", "Cigarettes, Briquets etc... !", {RightLabel = "→"},true, function()
-            end, RMenu:Get('example', 'tabac'))
-
-
-            RageUI.Button("Alcool", "Whisky, Vodka etc... !", {RightLabel = "→"},true, function()
-            end, RMenu:Get('example', 'alcool'))
-
-
-            RageUI.Button("Autres", "Parapluies, perceuses, Appats etc...", {RightLabel = "→"},true, function() 
-            end, RMenu:Get('example', 'autre'))
+            RageUI.Button("Autres", "Choisi les objets dont tu as besoins...", {RightLabel = "•"},true, function()
+            end, RMenu:Get('Modeo', 'autre'))
         end, function()
         end)
 
+        RageUI.IsVisible(RMenu:Get('Modeo', 'boisson'), true, true, true, function()
 
-
-        RageUI.IsVisible(RMenu:Get('example', 'boisson'), true, true, true, function()
-
-
-            RageUI.Button("→ Eau", "Liquide naturel, inodore, incolore et transparent quand il est pur.", {RightLabel = "~g~5€"}, true, function(Hovered, Active, Selected)
+            RageUI.Button("Eau", "Liquide naturel, inodore, incolore et transparent quand il est pur.", {RightLabel = "~g~5$"}, true, function(Hovered, Active, Selected)
                 if (Selected) then
                     TriggerServerEvent('modeo:BuyEau')
                 end
@@ -61,115 +39,35 @@ Citizen.CreateThread(function()
                 end, function()
                 end)
 
+                RageUI.IsVisible(RMenu:Get('Modeo', 'nourriture'), true, true, true, function()
 
-
-
-
-             RageUI.IsVisible(RMenu:Get('example', 'tabac'), true, true, true, function()
-
-
-                    RageUI.Button("→ Cigarette", "Petit rouleau de tabac haché et enveloppé dans un papier fin.", {RightLabel = "~g~10€"}, true, function(Hovered, Active, Selected)
-                        if (Selected) then
-                            TriggerServerEvent('modeo:BuyCigarette')
-                        end
-                    end)
-
-
-
-                    RageUI.Button("→ Briquet", "Petit appareil pouvant produire du feu à répétition.", {RightLabel = "~g~50€"}, true, function(Hovered, Active, Selected)
-                        if (Selected) then
-                            TriggerServerEvent('modeo:BuyBriquet')
-                        end
-                    end)
-                end, function()
+                        RageUI.Button("Pain", "Aliment fait de farine, d'eau, de sel et de levain, pétri, levé et cuit au four.", {RightLabel = "~g~5$"}, true, function(Hovered, Active, Selected)
+                            if (Selected) then
+                                 TriggerServerEvent('modeo:BuyPain')
+                              end
+                           end)
+                   end, function()
                 end)
 
+                    RageUI.IsVisible(RMenu:Get('Modeo', 'autre'), true, true, true, function()
 
-
-                RageUI.IsVisible(RMenu:Get('example', 'alcool'), true, true, true, function()
-
-
-                    RageUI.Button("→ Bière", "Boisson alcoolique fermentée, faite avec de l'orge germée et aromatisée avec des fleurs de houblon.", {RightLabel = "~g~27€"}, true, function(Hovered, Active, Selected)
-                        if (Selected) then
-                            TriggerServerEvent('modeo:BuyBeer')
-                        end
-                    end)
-
-
-
-                    RageUI.Button("→ Jager", "Jägermeister (maître chasseur en allemand) est une marque commerciale allemande de liqueur fabriquée et propriété de Mast-Jägermeister SE. Cette boisson titrant 35° est à base de plantes médicinales. Les 56 herbes qui entrent dans sa composition sont tenues secrètes.", {RightLabel = "~g~47€"}, true, function(Hovered, Active, Selected)
-                        if (Selected) then
-                            TriggerServerEvent('modeo:BuyJager')
-                        end
-                    end)
-                end, function()
-                end)
-
-
-
-                    RageUI.IsVisible(RMenu:Get('example', 'autre'), true, true, true, function()
-
-
-                        RageUI.Button("→ Appat de poisson", "Appliqué au domaine des milieux aquatiques, dans le domaine de la pêche, l'appât est une pâture pour piéger les poissons généralement carnivores, des céphalopodes (pieuvres et calmars) ou divers crustacés (crevettes, homards, langoustes, langoustines, écrevisses...).", {RightLabel = "~g~9€"}, true, function(Hovered, Active, Selected)
+                        RageUI.Button("Cigarette", "Petit rouleau de tabac haché et enveloppé dans un papier fin.", {RightLabel = "~g~10$"}, true, function(Hovered, Active, Selected)
                             if (Selected) then
-                                TriggerServerEvent('modeo:BuyBait')
+                                TriggerServerEvent('modeo:BuyCigarette')
                             end
                         end)
-
-
-
-                        RageUI.Button("→ Jumelles", "Instrument portatif à deux lunettes ; double lorgnette.", {RightLabel = "~g~120€"}, true, function(Hovered, Active, Selected)
-                            if (Selected) then
-                                TriggerServerEvent('modeo:BuyJumelles')
-                            end
-                        end)
-
-
-
-                        RageUI.Button("→ GPS", "Système de localisation (de mobiles) par satellite.", {RightLabel = "~g~60€"}, true, function(Hovered, Active, Selected)
-                            if (Selected) then
-                                TriggerServerEvent('modeo:BuyGPS')
-                            end
-                        end)
-
-
-                        RageUI.Button("→ Parapluie", "Matière fabriquée d'abord avec du chiffon, puis avec des fibres végétales (bois) réduites en pâte, traitée pour former une feuille mince.", {RightLabel = "~g~70€"}, true, function(Hovered, Active, Selected)
-                            if (Selected) then
-                                TriggerServerEvent('modeo:BuyBrolly')
-                            end
-                        end)
-                    end, function()
-                    end)
-
-
-                        RageUI.IsVisible(RMenu:Get('example', 'nourriture'), true, true, true, function()
-
-                            RageUI.Button("→ Pain", "Aliment fait de farine, d'eau, de sel et de levain, pétri, levé et cuit au four.", {RightLabel = "~g~5€"}, true, function(Hovered, Active, Selected)
-                                if (Selected) then
-                                    TriggerServerEvent('modeo:BuyPain')
-                                end
-                            end)
-
                         
-
-            end, function()
-                ---Panels
-            end, 1)
-
-
-            Citizen.Wait(0)
-        end
-    end)
-
-
-
-
+                          end, function()
+                         ---Panels
+                           end, 1)
+                
+                        Citizen.Wait(0) 
+                    end
+                end)
 
 
 
     ---------------------------------------- Position du Menu --------------------------------------------
-
-
 
     local position = {
         {x = 25.67 , y = -1346.37, z = 29.49 },
@@ -195,26 +93,21 @@ Citizen.CreateThread(function()
         {x = 1698.388, y = 4924.404, z = 42.063}
     }
     
-    
-
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(0)
-
+    
             for k in pairs(position) do
     
                 local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
                 local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
+    
                 if dist <= 1.0 then
 
-                   --[[RageUI.Text({
-                        message = "Appuyez sur [~b~E~w~] pour acceder au ~b~Shop",
-                        time_display = 1
-                    })--]]
+                   ESX.ShowHelpNotification("Appuyez sur [~b~E~w~] pour acceder au ~b~Shop")
 
-                    ESX.ShowHelpNotification("Appuyez sur [~b~E~w~] pour acceder au ~b~Shop")
                     if IsControlJustPressed(1,51) then
-                        RageUI.Visible(RMenu:Get('example', 'main'), not RageUI.Visible(RMenu:Get('example', 'main')))
+                        RageUI.Visible(RMenu:Get('Modeo', 'main'), not RageUI.Visible(RMenu:Get('Modeo', 'main')))
                     end
                 end
             end
@@ -223,9 +116,6 @@ Citizen.CreateThread(function()
 
 
     ---------------------------------------- Blips --------------------------------------------
-
-
-
 
 
     local blips = {
@@ -249,9 +139,7 @@ Citizen.CreateThread(function()
         {title="Magasin", colour=2, id=52,x = -1820.523, y = 792.518, z = 137.118},
         {title="Magasin", colour=2, id=52,x = -707.41 , y = -914.1264, z = 19.21},
         {title="Magasin", colour=2, id=52,x = 1698.388, y = 4924.404, z = 41.063}
-
     
-
     }
 
     Citizen.CreateThread(function()
@@ -493,7 +381,6 @@ Citizen.CreateThread(function()
         FreezeEntityPosition(ped, true)
         SetEntityInvincible(ped, true)
     end)
-    
 
     Citizen.CreateThread(function()
         for _, info in pairs(blips) do
@@ -508,5 +395,4 @@ Citizen.CreateThread(function()
             EndTextCommandSetBlipName(info.blip)
         end
     end)
-
     

@@ -46,12 +46,9 @@ Citizen.CreateThread(function()
             RageUI.Button("Autres", "Choisi les objets dont tu as besoins...", {RightLabel = "~g~→→"},true, function()
             end, RMenu:Get('Modeo', 'autre'))
 
-            RageUI.Button("----------------------------------------", nil, {},true, function(Hovered, Actived, Selected)
-                if (Selected) then
-                end
-            end)
+            RageUI.Separator("~h~↓ ~r~Fermer le Menu~w~ ↓")
 
-            RageUI.Button("~r~Fermer", "~r~Fermer le Menu", {RightLabel = "~r~←←"}, true, function(Hovered, Active, Selected)
+            RageUI.Button("~r~Fermer", nil, {RightLabel = "~r~←←"}, true, function(Hovered, Active, Selected)
             end, RMenu:Get('Modeo', 'choose'))
         end, function()
         end)

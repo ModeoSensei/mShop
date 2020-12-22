@@ -1,6 +1,6 @@
 # mShop
 
-Retrouvez moi sur discord : Modeo#3074
+Retrouvez moi sur discord : Modeo#6853
 
 Petit script Shop en RageUI ! 🔥
 

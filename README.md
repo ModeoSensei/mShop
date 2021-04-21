@@ -4,7 +4,7 @@ Retrouvez moi sur discord : Modeo#6853
 
 Petit script Shop en RageUI ! 🔥
 
-Discord : https://discord.gg/VUSUP457CG
+Discord : https://discord.gg/gPZdFDwFNW
 
 Preview V1 : https://www.youtube.com/watch?v=278TeLCNePk
 
